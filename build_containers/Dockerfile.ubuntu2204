@@ -1,11 +1,11 @@
-FROM ubuntu:focal
+FROM ubuntu:jammy
 
 ENV GO_VERSION=1.21.0
 ENV PATH=$PATH:/usr/local/go/bin
 
 RUN set -ex; \
     apt-get update; \
-    DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -yq \
+    apt-get install --no-install-recommends -yq \
         ca-certificates pkg-config g++ libvirt0 libvirt-dev wget git; \
     git config --global --add safe.directory '*'; \
     [ "$(arch)" = "x86_64" ] && arch="amd64" || arch="arm64"; \

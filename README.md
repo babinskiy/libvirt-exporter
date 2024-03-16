@@ -1,6 +1,7 @@
-# Prometheus libvirt exporter
+> Project forked from https://github.com/Tinkoff/libvirt-exporter just to be used for my needs
+> in more convenient way. No any significant changes are planned.
 
-Docker image is available at [dockerhub](https://hub.docker.com/r/alekseizakharov/libvirt-exporter).
+# Prometheus libvirt exporter
 
  - `Dockerfile` - creates a docker container with dynamically linked libvirt-exporter. Make an image and run with `docker container run -p9177:9177 -v /var/run/libvirt:/var/run/libvirt yourcontainername`. Based on the latest golang:alpine.
  - `build-with` - builds dynamically linked libvirt-exporter in the container based on Dockerfile specified as an argument. Ex.: `build-with ./build_container/Dockerfile.ubuntu2004` will build libvirt-exporter for Ubuntu 20.04.
@@ -105,4 +106,3 @@ This exporter makes use of
 [libvirt-go](https://gitlab.com/libvirt/libvirt-go-module), the official Go
 bindings for libvirt. This exporter make use of the
 `GetAllDomainStats()`
-

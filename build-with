@@ -16,6 +16,8 @@ fi
 
 set -xeu
 
+[[ "$(arch)" = "x86_64" ]] && ARCH="amd64" || ARCH="arm64"
+
 DOCKERFILE=$1
 BINARY_NAME=libvirt-exporter
 
@@ -23,5 +25,5 @@ docker build -t libvirtexporterbuild -f ${DOCKERFILE} .
 docker run --rm \
   -v "$PWD":/libvirt-exporter -w /libvirt-exporter \
   -e GOOS=linux \
-  -e GOARCH=amd64 \
+  -e GOARCH=${ARCH} \
    libvirtexporterbuild:latest go build -mod vendor -o ${BINARY_NAME}
